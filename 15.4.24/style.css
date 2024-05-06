@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+#buttons, #result {
+    flex: 1 1 45%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 500px;
+    overflow: scroll;
+}
+
+input[type="button"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+table{
+    width: 100%;
+}
+
