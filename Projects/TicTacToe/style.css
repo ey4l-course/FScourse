@@ -1,0 +1,29 @@
+#board{
+    border: 1px solid black;
+    margin: auto;
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    font-size: 0;
+}
+
+.tiles{
+    border: 1px solid black;
+    margin: 0px;
+    display: inline-block;
+    width: 190px;
+    height: 190px;
+    margin: 4px;
+}
+
+.menu{
+    border: 1px solid black;
+    margin: auto;
+    max-width: 600px;
+    max-height: 400px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+}
