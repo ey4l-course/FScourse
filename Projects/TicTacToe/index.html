@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac_toe</title>
     <link rel="stylesheet" href="style.css">
+    <script src="UtilMgr.js"></script>
     <script src="Game.js"></script>
     <script src="UI.js"></script>
     <script>
+        const utils = new UtilMgr;
+        const game = new Game;
+        const UI = new UserI;
         document.addEventListener("DOMContentLoaded", init)
         function init(){
-            const game = new Game;
-            const UI = new UserI;
-            game.init();
+            // game.init();
             UI.init();
         }
     </script>
