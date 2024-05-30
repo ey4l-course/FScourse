@@ -12,22 +12,23 @@ class Game {
             [2,4,6]]
         this.activePlayer = "x";
     }
+
     isWin(){
         return this.winCondition.some((cond) => {
             return this.board[cond[0]] != '' &&
                 this.board[cond[0]] === this.board[cond[1]] &&
-                this.board[cond[0]] === this.board[cond[2]]
+                this.board[cond[0]] === this.board[cond[2]];
         });
     }
 
     isDraw(){
-        return this.board.every((tile)=>{return tile !== ''})
+        return this.board.every((tile)=>{return tile !== ''});
     }
     changePlayer(player){
         if (player === "x"){
-            this.activePlayer = "o"
+            this.activePlayer = "o";
         }else{
-            this.activePlayer = "x"
-        }
+            this.activePlayer = "x";
+        };
     }
 }
