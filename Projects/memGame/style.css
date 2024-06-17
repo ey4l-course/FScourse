@@ -1,0 +1,33 @@
+body {
+    background-color: #f0f8ff;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+.container {
+    margin-top: 50px;
+}
+.card {
+    background-color: #ffebcd;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn {
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+}
+.btn:hover {
+    background-color: #ff1493;
+}
+.form-check-label, .form-group label {
+    color: #4682b4;
+}
+.form-group img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.form-group img.selected {
+    border-color: #ff69b4;
+}
