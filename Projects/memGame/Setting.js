@@ -1,7 +1,6 @@
 class Setting {
-    constructor(players, theme, difficulty){
+    constructor(players, theme){
         this.players = players;
         this.theme = theme;
-        this.difficulty = difficulty;
     }
 }
