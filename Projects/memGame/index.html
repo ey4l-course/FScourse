@@ -7,20 +7,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <script src="Setting.js"></script>
     <script src="GUI.js"></script>
+    <script src="Card.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="board">
-            <div class="row">
+        <!-- <div class="board">
+            <div class="row" id="header">
+                <h2 class="text-center">memory game</h2>
             </div>
-        </div>
+            <div class="row" id="gameBoard"></div>
+            <div class="row mt-3 footer">
+                <div class="col-12 col-sm-6 mb-1" id="player1">
+                    <div class="p-1 bg-danger text-center text-white rounded">
+                        <h5 class="mb-2">Player 1 Score</h5>
+                        <span class="badge rounded-pill bg-warning" style="font-size: 1.2rem;">7</span>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 mb-1" id="player2">
+                    <div class="p-1 bg-success text-center text-white rounded">
+                        <h5 class="mb-2">Player 2 Score</h5>
+                        <span class="badge rounded-pill bg-info" style="font-size: 1.2rem;">5</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
     <script>
         const UI = new GUI("menu");
-        UI.init();
+        // UI.init();
     </script>
 </body>
 </html>

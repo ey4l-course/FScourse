@@ -3,6 +3,7 @@ class Setting {
         this.players = players;
         this.theme = theme;
         this.api = "";
+        this.cards = new Array(20).fill().map((value,index) => parseInt(index / 2) + 1);
     }
     assignAPI(){
         switch (this.theme){
