@@ -32,14 +32,47 @@ function playersInpt(){
                 </div>
                 `
             }
-
+            document.querySelectorAll(".form-control.form-control-sm").forEach(field => {
+                field.addEventListener('input', playerNameValid);
+                field.addEventListener('blur', playerNameValid);
+            })
         })
-    })
+    })    
+}
+
+function playerNameValid (event){
+    const inpt = event.target;
+    const isValid = /^[a-zA-Z]{3,}$/.test(inpt.value);
+    console.log(isValid)
+    if (isValid){
+        inpt.classList.add('is-valid')
+        inpt.classList.remove('is-invalid')        
+    }else{
+        inpt.classList.remove('is-valid')
+        inpt.classList.add('is-invalid')            
+    }
+    // console.log(inpt);
+}
+
+function menuIsValid(){
+    const players = document.querySelectorAll('.form-control.form-control-sm')
+    const names = document.querySelectorAll('.is-valid');
+    const theme = document.querySelectorAll('.selected');
+    let isFormValid = JSON.parse("false");
+    if (names.length !== players.length || names.length === 0)
+        alert("Players names must consist of at least 3 english letters and must not contain non-alphabetical values");
+    if (theme.length === 0)
+        alert("Please select a theme")
+    if (names.length === players.length && names.length !== 0 && theme.length !== 0){
+        newGame()
+        console.log("good")
+    }
+
 }
 
 function newGame(){
     const players = Array.from(document.querySelectorAll(".form-control")).map(inpt => inpt.value);
-    const theme = /*document.querySelector(".selected").id;*/ "s"
+    const theme = document.querySelector(".selected").id;
     // console.log(theme)
     // console.log(players);
     setting = new Setting(players, theme);

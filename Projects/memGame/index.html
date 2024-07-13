@@ -14,11 +14,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- <div class="board">
+        <div class="board">
             <div class="row" id="header">
                 <h2 class="text-center">memory game</h2>
             </div>
-            <div class="row" id="gameBoard"></div>
+            <div class="row row-cols-4 row-cols-md-5" id="gameBoard"></div>
             <div class="row mt-3 footer">
                 <div class="col-12 col-sm-6 mb-1" id="player1">
                     <div class="p-1 bg-danger text-center text-white rounded">
@@ -33,11 +33,22 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     <script>
         const UI = new GUI("menu");
-        // UI.init();
+        UI.init();
+        // for (let i = 0; i < 20; i ++){
+        //     const card = document.createElement('div');
+        //     card.classList.add('col')
+        //     card.classList.add('grid-item');
+        //     card.id = `card${i}`;
+        //     card.innerHTML = `
+        //     <div class="card">
+        //         <img src="tstcat.jpg" alt="">
+        //     </div>`;
+        //     document.getElementById('gameBoard').appendChild(card);
+        // }
     </script>
 </body>
 </html>

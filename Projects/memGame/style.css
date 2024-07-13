@@ -34,6 +34,20 @@ body {
 .text-center{
     padding: 20px;
 }
+.card{
+    height: 100px;
+    max-width: 100px;
+    background-color: #ff69b4;
+    border: 1px solid #4682b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.card img{
+    height: 100%;
+    width: auto;
+}
 /* 
 .theme-option{
     width: 200px;
