@@ -53,20 +53,20 @@ class GUI{
             document.querySelector('.container').innerHTML = `
             <div class="board">
                 <div class="row" id="header">
-                    <h2 class="text-center">memory game</h2>
+                    <h2 class="text-center">${setting.themeName()} memory game</h2>
                 </div>
                 <div class="row row-cols-4 row-cols-md-5" id="gameBoard"></div>
                 <div class="row mt-4 footer">
                     <div class="col-12 col-sm-6 text-center mb-3" id="player1">
                         <div class="p-3 bg-danger text-white rounded">
-                            <h4 class="mb-2">Player 1 Score</h4>
-                            <span class="badge rounded-pill bg-warning" style="font-size: 1.5rem;">7</span>
+                            <h4 class="mb-2">${setting.players[0]} Score</h4>
+                            <span class="badge rounded-pill bg-warning" style="font-size: 1.5rem;">0</span>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 text-center mb-3" id="player2">
                         <div class="p-3 bg-success text-white rounded">
-                            <h4 class="mb-2">Player 2 Score</h4>
-                            <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">5</span>
+                            <h4 class="mb-2">${setting.players[1]} Score</h4>
+                            <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">0</span>
                         </div>
                     </div>
                 </div>

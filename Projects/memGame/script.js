@@ -43,7 +43,7 @@ function playersInpt(){
 function playerNameValid (event){
     const inpt = event.target;
     const isValid = /^[a-zA-Z]{3,}$/.test(inpt.value);
-    console.log(isValid)
+    // console.log(isValid)
     if (isValid){
         inpt.classList.add('is-valid')
         inpt.classList.remove('is-invalid')        
@@ -65,7 +65,7 @@ function menuIsValid(){
         alert("Please select a theme")
     if (names.length === players.length && names.length !== 0 && theme.length !== 0){
         newGame()
-        console.log("good")
+        // console.log("good")
     }
 
 }
@@ -76,7 +76,10 @@ function newGame(){
     // console.log(theme)
     // console.log(players);
     setting = new Setting(players, theme);
-    // setting.assignAPI();
+    setting.shuffleDeck();
+    setting.assignAPI();
+    UI.state = "Game"
+    UI.init()
 }
 
 
