@@ -73,13 +73,26 @@ function menuIsValid(){
 function newGame(){
     const players = Array.from(document.querySelectorAll(".form-control")).map(inpt => inpt.value);
     const theme = document.querySelector(".selected").id;
+    const mode = document.querySelector('input[type="radio"]:checked');
+    if (mode.value === "singlePlayer")
+        players[1] = "Computer";
+    // console.log(mode.value);
     // console.log(theme)
     // console.log(players);
-    setting = new Setting(players, theme);
-    setting.shuffleDeck();
+    setting = new Setting(players, theme, mode.value);
     setting.assignAPI();
     UI.state = "Game"
     UI.init()
+
+    setting.getThemeImages()
+        .then(() => {
+            setting.shuffleDeck();
+        })
+        .catch(error => console.log(`An error occured ${error}`));
+}
+
+function checkVictory(){
+        return UI.board.every((card) => card.state === "up");
 }
 
 

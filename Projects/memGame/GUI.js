@@ -3,6 +3,8 @@ class GUI{
         this.state = state;
         this.board = new Array(20).fill("",0,20);
         this.DeckStyle = ""
+        this.activePlayer = 1;
+        this.turn = 0;
     }
     chooseDeckStyle(){
         
@@ -58,13 +60,13 @@ class GUI{
                 <div class="row row-cols-4 row-cols-md-5" id="gameBoard"></div>
                 <div class="row mt-4 footer">
                     <div class="col-12 col-sm-6 text-center mb-3" id="player1">
-                        <div class="p-3 bg-danger text-white rounded">
+                        <div class="p-3 bg-success text-white rounded activePlayer" id = "player1bg">
                             <h4 class="mb-2">${setting.players[0]} Score</h4>
-                            <span class="badge rounded-pill bg-warning" style="font-size: 1.5rem;">0</span>
+                            <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">0</span>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 text-center mb-3" id="player2">
-                        <div class="p-3 bg-success text-white rounded">
+                        <div class="p-3 bg-success text-white rounded" id = "player2bg">
                             <h4 class="mb-2">${setting.players[1]} Score</h4>
                             <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">0</span>
                         </div>
@@ -75,15 +77,19 @@ class GUI{
                 const card = document.createElement('div');
                 card.classList.add('col')
                 card.classList.add('grid-item');
-                card.id = `card${i}`;
+                // card.id = `card${i}`;
                 card.innerHTML =`
                     <div class="card">
-                        <img src="${setting.deckStyle()}" alt="">
+                        <img src="${setting.deckStyle()}" alt="" id = "card${i}">
                     </div>`;
                 document.getElementById('gameBoard').appendChild(card);
-                this.board[i] = new Card(card)
+                this.board[i] = new Card(card, i)
             }
-            
+            const images = document.querySelectorAll(".card");
+            for (let i = 0; i < images.length; i ++){
+                console.log(images[i])
+                images[i].addEventListener("click", this.board[i].cardClick.bind(this.board[i]));
+            }
         }
     }
 }

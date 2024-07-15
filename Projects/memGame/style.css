@@ -43,11 +43,24 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.grid-item{
+    display: flex;
+    justify-content: center;
 }
 .card img{
     height: 100%;
     width: auto;
 }
+.card img:hover{
+    box-shadow: 0 0 20px #fff;
+}
+.activePlayer{
+    box-shadow: 0 0 20px rgb(107, 190, 107);
+}
+
 /* 
 .theme-option{
     width: 200px;
