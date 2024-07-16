@@ -83,7 +83,6 @@ function newGame(){
     setting.assignAPI();
     UI.state = "Game"
     UI.init()
-
     setting.getThemeImages()
         .then(() => {
             setting.shuffleDeck();

@@ -51,6 +51,7 @@ class Setting {
             // [this.cards[i],this.cards[rnd]] = [this.cards[rnd],this.cards[i]];
             // console.log(`Swapped ${this.cards[i]} with ${this.cards[rnd]}`);
         }
+        UI.setCardListeners();
     }
     assignAPI(){
         switch (this.theme){
@@ -74,7 +75,7 @@ class Setting {
                 .then(data => {
                     switch (this.api){
                         case "https://hp-api.onrender.com/api/characters":
-                            console.log(data);
+                            // console.log(data);
                             data.forEach((element, index) => {
                             if (index < 10){
                                 // console.log(element.image)

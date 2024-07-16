@@ -74,22 +74,30 @@ class GUI{
                 </div>
             </div>`
             for (let i = 0; i < this.board.length; i ++){
+                const cardPosition = document.createElement('div');
                 const card = document.createElement('div');
-                card.classList.add('col')
-                card.classList.add('grid-item');
-                // card.id = `card${i}`;
-                card.innerHTML =`
-                    <div class="card">
-                        <img src="${setting.deckStyle()}" alt="" id = "card${i}">
-                    </div>`;
-                document.getElementById('gameBoard').appendChild(card);
-                this.board[i] = new Card(card, i)
-            }
-            const images = document.querySelectorAll(".card");
-            for (let i = 0; i < images.length; i ++){
-                console.log(images[i])
-                images[i].addEventListener("click", this.board[i].cardClick.bind(this.board[i]));
+                cardPosition.classList.add('col');
+                cardPosition.classList.add('grid-item');
+                card.classList.add("card")
+                card.id = `card${i}`;
+                card.addEventListener("click", function(){console.log(this)})
+                card.innerHTML = `<img src="${setting.deckStyle()}" alt="" id = "card${i}">`
+                // card.innerHTML =`
+                //     <div class="card">
+                //         <img src="${setting.deckStyle()}" alt="" id = "card${i}">
+                //     </div>`;
+                document.getElementById('gameBoard').appendChild(cardPosition);
+                cardPosition.appendChild(card);
+                this.board[i] = new Card(card, i);
             }
         }
     }
+    // setCardListeners(){
+    //     const images = document.querySelectorAll(".card");
+    //     for (let i = 0; i < images.length; i ++){
+    //         console.log(images[i])
+    //         images[i].addEventListener("click", this.board[i].cardClick.bind(this.board[i]));
+    //     }
+    // }
+
 }
