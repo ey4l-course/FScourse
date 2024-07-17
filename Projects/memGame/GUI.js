@@ -80,17 +80,31 @@ class GUI{
                 cardPosition.classList.add('grid-item');
                 card.classList.add("card")
                 card.id = `card${i}`;
-                card.addEventListener("click", function(){console.log(this)})
                 card.innerHTML = `<img src="${setting.deckStyle()}" alt="" id = "card${i}">`
                 // card.innerHTML =`
                 //     <div class="card">
                 //         <img src="${setting.deckStyle()}" alt="" id = "card${i}">
                 //     </div>`;
                 document.getElementById('gameBoard').appendChild(cardPosition);
-                cardPosition.appendChild(card);
-                this.board[i] = new Card(card, i);
+                // cardPosition.appendChild(card);
+                this.board[i] = new Card(card);
+                card.addEventListener("click", UI.board[i].cardClick.bind(UI.board[i]));
+
             }
         }
+    }
+    renderCards(){
+        document.querySelectorAll(".grid-item").forEach((item, index) => {
+            // console.log(item)
+            item.appendChild(UI.board[index].$DOMobject)
+        });
+    }
+
+    HandleMatch(){
+        this.board.forEach((card) => {
+            if (card.state === "up")
+                card.$DOMobject.innerHTML = ""
+        })
     }
     // setCardListeners(){
     //     const images = document.querySelectorAll(".card");

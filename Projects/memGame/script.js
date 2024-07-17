@@ -1,5 +1,6 @@
 // Global variables
 
+const cardsToMatch = ["",""];
 let setting;
 
 // Game logic and functionality
@@ -84,10 +85,13 @@ function newGame(){
     UI.state = "Game"
     UI.init()
     setting.getThemeImages()
-        .then(() => {
-            setting.shuffleDeck();
-        })
+        .then(() => {setting.shuffleDeck();})
+        .then(() => {UI.renderCards();})
         .catch(error => console.log(`An error occured ${error}`));
+}
+
+function isMatch(){
+    return cardsToMatch[0].imageAlt === cardsToMatch[1].imageAlt;
 }
 
 function checkVictory(){

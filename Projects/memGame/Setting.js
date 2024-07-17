@@ -51,7 +51,6 @@ class Setting {
             // [this.cards[i],this.cards[rnd]] = [this.cards[rnd],this.cards[i]];
             // console.log(`Swapped ${this.cards[i]} with ${this.cards[rnd]}`);
         }
-        UI.setCardListeners();
     }
     assignAPI(){
         switch (this.theme){
