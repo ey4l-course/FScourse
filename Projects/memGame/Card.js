@@ -7,20 +7,29 @@ class Card{
     }
     
     cardClick(){
-        this.state = "up"
-        this.$DOMobject.innerHTML = `
-                     <div class="card">
-                         <img src="${this.image}" alt="${this.imageAlt}">
-                     </div>`;
-        cardsToMatch[UI.turn] = this;
-        if (UI.turn === 1){
-            if (isMatch){
-                UI.HandleMatch()
-            }
+        if (cardListenersOn){
+            this.state = "up"
+            this.$DOMobject.innerHTML = `<img src="${this.image}" alt="${this.imageAlt}">`;
+            cardsToMatch[UI.turn] = this;
+            // console.log(`Value of isMatch: ${isMatch()}`)
+            // console.log(`Type of isMatch is: ${typeof isMatch()}`)
+            if (UI.turn === 1){
+                if (isMatch()){
+                    // console.log("true")
+                    UI.HandleMatch()
+                }else{
+                    // console.log("false")
+                    UI.HandleNoMatch()
+                }
+                UI.turn = 0;
+                UI.changePlayer()
+            }else{UI.turn = 1;}
         }
-        UI.turn = 1;
-        
-        
+    }
+
+    flipDown(){
+        this.state = "down"
+        this.$DOMobject.innerHTML = `<img src="${setting.deckStyle()}" alt="">`;
     }
 
 

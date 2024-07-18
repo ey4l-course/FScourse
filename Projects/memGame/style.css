@@ -60,7 +60,13 @@ body {
 .activePlayer{
     box-shadow: 0 0 20px rgb(107, 190, 107);
 }
+.card:hover{
+    cursor: pointer;
+}
 
+.cardWon{
+    display: none;
+}
 /* 
 .theme-option{
     width: 200px;

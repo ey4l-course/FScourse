@@ -2,6 +2,7 @@
 
 const cardsToMatch = ["",""];
 let setting;
+let cardListenersOn = true;
 
 // Game logic and functionality
 
@@ -83,6 +84,7 @@ function newGame(){
     setting = new Setting(players, theme, mode.value);
     setting.assignAPI();
     UI.state = "Game"
+    UI.activePlayer = players[0];
     UI.init()
     setting.getThemeImages()
         .then(() => {setting.shuffleDeck();})

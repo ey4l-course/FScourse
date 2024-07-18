@@ -3,7 +3,7 @@ class GUI{
         this.state = state;
         this.board = new Array(20).fill("",0,20);
         this.DeckStyle = ""
-        this.activePlayer = 1;
+        this.activePlayer = "";
         this.turn = 0;
     }
     chooseDeckStyle(){
@@ -62,13 +62,13 @@ class GUI{
                     <div class="col-12 col-sm-6 text-center mb-3" id="player1">
                         <div class="p-3 bg-success text-white rounded activePlayer" id = "player1bg">
                             <h4 class="mb-2">${setting.players[0]} Score</h4>
-                            <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">0</span>
+                            <span class="badge rounded-pill bg-info" id="${setting.players[0]}"style="font-size: 1.5rem;">0</span>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 text-center mb-3" id="player2">
                         <div class="p-3 bg-success text-white rounded" id = "player2bg">
                             <h4 class="mb-2">${setting.players[1]} Score</h4>
-                            <span class="badge rounded-pill bg-info" style="font-size: 1.5rem;">0</span>
+                            <span class="badge rounded-pill bg-info" id="${setting.players[1]}" style="font-size: 1.5rem;">0</span>
                         </div>
                     </div>
                 </div>
@@ -101,10 +101,70 @@ class GUI{
     }
 
     HandleMatch(){
-        this.board.forEach((card) => {
-            if (card.state === "up")
-                card.$DOMobject.innerHTML = ""
-        })
+        cardListenersOn = false;
+        const activePlayer = document.getElementById(this.activePlayer);
+        const score = parseInt(activePlayer.innerText);
+        if (checkVictory())
+            this.handleVictory();
+        setTimeout(() => {
+            cardsToMatch.forEach((card) => card.$DOMobject.classList.add("cardWon"));
+            activePlayer.innerText = score + 1;
+            cardListenersOn = true;
+        }, 300);
+        }
+    
+    HandleNoMatch(){
+        cardListenersOn = false;
+        setTimeout(() => {
+            cardsToMatch.forEach((card) => card.flipDown())
+            cardListenersOn = true;
+        }, 500);
+    }
+
+    handleVictory(){
+        let winner;
+        const player1score = parseInt(document.getElementById(setting.players[0]).innerText)
+        const player2score = parseInt(document.getElementById(setting.players[1]).innerText)
+        if (player1score > player2score){
+            winner = setting.players[0];
+        }else{
+            if (player2score > player1score){
+                winner = setting.players[1];
+            }else{
+                winner = "draw"
+            }
+        }
+        document.querySelector(".container").innerHTML = `
+        <div class="board">
+            <div class="col-12" id="header">
+                <h2 class="text-center">
+                    The winner is:<br>
+                    ${winner}
+                </h2>
+                <h4></h4>
+            </div>
+            <div class="col-12" id="playAgain">
+                <div class="p-1 bg-success text-center text-white rounded">
+                    <h2>Play again</h2>
+                </div>
+            </div>
+        </div>`
+        UI.state = "menu"
+        document.getElementById("playAgain").addEventListener("click", UI.init)
+    }
+    
+    changePlayer(){
+        const playersBadge = document.querySelectorAll(".p-3");
+        if (this.activePlayer === setting.players[0]){
+            this.activePlayer = setting.players[1];
+            playersBadge[0].classList.remove("activePlayer")
+            playersBadge[1].classList.add("activePlayer")
+        }else{
+            this.activePlayer = setting.players[0];
+            playersBadge[0].classList.add("activePlayer")
+            playersBadge[1].classList.remove("activePlayer")
+        }
+        
     }
     // setCardListeners(){
     //     const images = document.querySelectorAll(".card");
