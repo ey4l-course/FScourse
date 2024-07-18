@@ -10,7 +10,7 @@ class GUI{
         
     }
     init(){
-        if (this.state == "menu"){
+        if (this.state === "menu"){
             document.querySelector('.container').innerHTML = `
                 <div class="board">
                     <h2 class="text-center">Game Settings</h2>
@@ -104,8 +104,11 @@ class GUI{
         cardListenersOn = false;
         const activePlayer = document.getElementById(this.activePlayer);
         const score = parseInt(activePlayer.innerText);
-        if (checkVictory())
+        if (checkVictory()){
+            this.state = "menu";
             this.handleVictory();
+        }
+            
         setTimeout(() => {
             cardsToMatch.forEach((card) => card.$DOMobject.classList.add("cardWon"));
             activePlayer.innerText = score + 1;
@@ -149,8 +152,10 @@ class GUI{
                 </div>
             </div>
         </div>`
-        UI.state = "menu"
-        document.getElementById("playAgain").addEventListener("click", UI.init)
+        document.getElementById("playAgain").addEventListener("click",() => {
+            this.state = "menu"
+            UI.init()
+        })
     }
     
     changePlayer(){

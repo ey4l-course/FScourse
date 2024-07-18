@@ -22,7 +22,8 @@ class Card{
                     UI.HandleNoMatch()
                 }
                 UI.turn = 0;
-                UI.changePlayer()
+                if (UI.state === "Game")
+                UI.changePlayer();
             }else{UI.turn = 1;}
         }
     }
