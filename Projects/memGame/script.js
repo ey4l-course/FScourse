@@ -111,22 +111,29 @@ function choosePCCard(){
 }
 
 function pcMove(){
-    console.log(pcPlayMem);
+    // console.log(pcPlayMem);
     let index = choosePCCard();
     const first = UI.board[index];
-    console.log(`checking 1st: ${first.imageAlt}`)
+    // console.log(`checking 1st: ${first.imageAlt}`)
     first.cardClick();
     index = choosePCCard();
-    let second = pcPlayMem.find(item => item.imageAlt === first.imageAlt);
-    console.log("second is: ", second);
+    let second = pcPlayMem.find(item => {
+        // console.log(`checking memory for: ${item.imageAlt}`);
+        return item.imageAlt === first.imageAlt;
+    });
+    // console.log("second is: ", second);
     if (!second)
         second = UI.board[index];
     if (first.imageAlt !== second.imageAlt){
         addCard(first, pcPlayMem);
         addCard(second, pcPlayMem);
     }
-    console.log(`checking 2nd: ${second}`)
-    second.cardClick();
+    // console.log('After adding, pcPlayMem:', pcPlayMem);
+    // console.log(`checking 2nd: ${second.imageAlt}`)
+    setTimeout(() => {
+        second.cardClick();    
+    }, 300);
+    
 }
 
 function addCard(card, arr){
