@@ -113,7 +113,7 @@ class GUI{
             cardsToMatch.forEach((card) => card.$DOMobject.classList.add("cardWon"));
             activePlayer.innerText = score + 1;
             cardListenersOn = true;
-        }, 300);
+        }, 1000);
         }
     
     HandleNoMatch(){
@@ -121,7 +121,7 @@ class GUI{
         setTimeout(() => {
             cardsToMatch.forEach((card) => card.flipDown())
             cardListenersOn = true;
-        }, 500);
+        }, 1000);
     }
 
     handleVictory(){
@@ -164,6 +164,8 @@ class GUI{
             this.activePlayer = setting.players[1];
             playersBadge[0].classList.remove("activePlayer")
             playersBadge[1].classList.add("activePlayer")
+            if (this.activePlayer === "Computer")
+                setTimeout(pcMove, 1200);
         }else{
             this.activePlayer = setting.players[0];
             playersBadge[0].classList.add("activePlayer")
