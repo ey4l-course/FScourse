@@ -111,25 +111,32 @@ function choosePCCard(){
 }
 
 function pcMove(){
-    // console.log(pcPlayMem);
     let index = choosePCCard();
     const first = UI.board[index];
-    // console.log(`checking 1st: ${first.imageAlt}`)
     first.cardClick();
     index = choosePCCard();
     let second = pcPlayMem.find(item => {
-        // console.log(`checking memory for: ${item.imageAlt}`);
         return item.imageAlt === first.imageAlt;
     });
-    // console.log("second is: ", second);
-    if (!second)
+    if (!second){
         second = UI.board[index];
+        console.log(`${first.imageAlt} was not found`)
+    }else{
+        console.log(second.$DOMobject + "was found on playmem with picture: " + second.imageAlt);
+        let tmp = UI.board.find(item => {
+            return item.imageAlt === second.imageAlt && item.$DOMobject !== second.$DOMobject;
+        })
+        second = tmp;
+        console.log(second.$DOMobject + " with picture " + second.imageAlt);
+        
+    }
+
     if (first.imageAlt !== second.imageAlt){
+        console.log(`adding ${JSON.stringify(first)} and ${JSON.stringify(second)} to playmem: ${pcPlayMem}`)
         addCard(first, pcPlayMem);
         addCard(second, pcPlayMem);
     }
-    // console.log('After adding, pcPlayMem:', pcPlayMem);
-    // console.log(`checking 2nd: ${second.imageAlt}`)
+    console.log(`second is ${JSON.stringify(second)}`)
     setTimeout(() => {
         second.cardClick();    
     }, 300);
